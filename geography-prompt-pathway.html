@@ -64,6 +64,18 @@
             color: var(--white);
         }
 
+        .header-nav { display: flex; align-items: center; gap: 1.25rem; }
+
+        .header-nav a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .header-nav a:hover { color: var(--white); }
+
         .header-badge {
             font-size: 0.72rem;
             color: rgba(255,255,255,0.5);
@@ -598,8 +610,14 @@
 
 <header class="header">
     <div class="header-inner">
-        <h1>The Geography Prompt Pathway</h1>
-        <span class="header-badge">GTA NSW/ACT 2026</span>
+        <h1>Geography AI Toolkit</h1>
+        <nav class="header-nav">
+            <a href="index.html">Home</a>
+            <a href="master-prompts.html">Master Prompts</a>
+            <a href="how-ai-works.html">How AI Works</a>
+            <a href="task-design.html">Task Design</a>
+            <span class="header-badge">GTA NSW/ACT 2026</span>
+        </nav>
     </div>
 </header>
 
