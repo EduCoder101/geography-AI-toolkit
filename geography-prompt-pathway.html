@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Geography Prompt Pathway | GTA NSW/ACT Conference 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1a2a3a;
+            --navy-deep: #0f1c28;
+            --sage: #5a8a6a;
+            --sage-light: #e8f0eb;
+            --sage-dark: #3d6b4e;
+            --sand: #d4b896;
+            --sand-light: #f5efe6;
+            --sand-dark: #b89b74;
+            --off-white: #faf8f5;
+            --white: #ffffff;
+            --text: #2a2a2a;
+            --text-light: #555555;
+            --border: #e0dbd5;
+            --vague-bg: #fdf0f0;
+            --vague-border: #e8c4c4;
+            --specific-bg: #eef6f0;
+            --specific-border: #b8d4be;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--off-white);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Crimson Pro', Georgia, serif; }
+
+        /* ─── HEADER ─── */
+        .header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .header-badge {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.7rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--sage-dark) 100%);
+            padding: 4rem 2rem 3.5rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            background: rgba(90,138,106,0.08);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 650px;
+            margin: 0 auto 0.5rem;
+            line-height: 1.7;
+        }
+
+        .hero .hero-sub {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.45);
+            margin-top: 1rem;
+        }
+
+        /* ─── INTRO ─── */
+        .intro {
+            max-width: 1100px;
+            margin: 2.5rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .intro-box {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem 2.25rem;
+            border: 1.5px solid var(--border);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .intro-box h3 {
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .intro-box p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.6rem;
+            line-height: 1.7;
+        }
+
+        .intro-box p:last-child { margin-bottom: 0; }
+
+        .phases-strip {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .phase-chip {
+            background: var(--sand-light);
+            color: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--sand);
+        }
+
+        .phase-chip span { font-weight: 400; color: var(--text-light); }
+
+        /* ─── CONTROLS ─── */
+        .controls-wrap {
+            max-width: 1280px;
+            margin: 2rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.7rem 1rem 0.7rem 2.5rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            background: var(--white);
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus { border-color: var(--sage); }
+
+        .search-box svg {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            color: var(--text-light);
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-pill {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.4rem 0.85rem;
+            border-radius: 20px;
+            border: 1.5px solid var(--border);
+            background: var(--white);
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-pill:hover { border-color: var(--sage); color: var(--sage); }
+
+        .filter-pill.active {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: var(--white);
+        }
+
+        .expand-btns {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .expand-btn {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .expand-btn:hover { border-color: var(--sage); color: var(--sage); }
+
+        /* ─── MAIN ─── */
+        .main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 4rem;
+        }
+
+        /* ─── PHASE CARD ─── */
+        .phase-card {
+            margin-bottom: 1.5rem;
+            border-radius: 14px;
+            border: 1.5px solid var(--border);
+            background: var(--white);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s;
+        }
+
+        .phase-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+        .phase-header {
+            padding: 1.25rem 1.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        .phase-header:hover { background: rgba(90,138,106,0.03); }
+
+        .phase-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .phase-title {
+            flex: 1;
+        }
+
+        .phase-title h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.25;
+        }
+
+        .phase-title p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.15rem;
+        }
+
+        .phase-chevron {
+            width: 20px;
+            height: 20px;
+            color: var(--text-light);
+            transition: transform 0.25s;
+            flex-shrink: 0;
+        }
+
+        .phase-card.expanded .phase-chevron { transform: rotate(180deg); }
+
+        .phase-body {
+            display: none;
+            padding: 0 1.75rem 1.5rem;
+        }
+
+        .phase-card.expanded .phase-body { display: block; }
+
+        .phase-intro {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* ─── STRATEGY CARD ─── */
+        .strategy {
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border: 1.5px solid var(--border);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .strategy:last-child { margin-bottom: 0; }
+
+        .strategy.hidden { display: none; }
+
+        .strategy-header {
+            padding: 0.9rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: background 0.15s;
+        }
+
+        .strategy-header:hover { background: var(--sage-light); }
+
+        .strategy-name {
+            flex: 1;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .strategy-tags {
+            display: flex;
+            gap: 0.3rem;
+            flex-shrink: 0;
+        }
+
+        .tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: var(--sand-light);
+            color: var(--sand-dark);
+        }
+
+        .strategy-chevron {
+            width: 16px;
+            height: 16px;
+            color: var(--text-light);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .strategy.open .strategy-chevron { transform: rotate(180deg); }
+
+        .strategy-body {
+            display: none;
+            padding: 0 1.25rem 1.25rem;
+        }
+
+        .strategy.open .strategy-body { display: block; }
+
+        /* Prompt boxes */
+        .prompt-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (max-width: 700px) {
+            .prompt-pair { grid-template-columns: 1fr; }
+        }
+
+        .prompt-box {
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 0.88rem;
+            line-height: 1.65;
+            position: relative;
+        }
+
+        .prompt-vague {
+            background: var(--vague-bg);
+            border: 1.5px solid var(--vague-border);
+            color: #8a5a5a;
+        }
+
+        .prompt-specific {
+            background: var(--specific-bg);
+            border: 1.5px solid var(--specific-border);
+            color: #3a5a40;
+        }
+
+        .prompt-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .prompt-vague .prompt-label { color: #b07070; }
+        .prompt-specific .prompt-label { color: var(--sage-dark); }
+
+        .prompt-label .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .prompt-vague .dot { background: #d09090; }
+        .prompt-specific .dot { background: var(--sage); }
+
+        .prompt-text {
+            font-style: italic;
+        }
+
+        .prompt-specific .prompt-text { font-style: normal; }
+
+        .why-line {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .why-line strong { color: var(--sage-dark); font-weight: 600; }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.76rem;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .copy-btn:hover { background: var(--sage); transform: translateY(-1px); }
+        .copy-btn.copied { background: var(--sage); }
+
+        .copy-btn svg { width: 13px; height: 13px; }
+
+        /* ─── NO RESULTS ─── */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-light);
+            display: none;
+        }
+
+        .no-results.visible { display: block; }
+
+        /* ─── GOLDEN RULE ─── */
+        .golden-rule {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+            color: var(--white);
+            border-radius: 14px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .golden-rule h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--sand);
+        }
+
+        .golden-rule p {
+            font-size: 1rem;
+            line-height: 1.75;
+            max-width: 600px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .golden-rule p strong { color: var(--white); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-light);
+            font-size: 0.82rem;
+        }
+
+        /* ─── TOAST ─── */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.75rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 2rem; }
+            .hero { padding: 3rem 1.5rem 2.5rem; }
+            .controls { flex-direction: column; align-items: stretch; }
+            .filter-pills { justify-content: center; }
+            .phase-header { padding: 1rem; }
+            .strategy-tags { display: none; }
+            .phases-strip { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <h1>The Geography Prompt Pathway</h1>
+        <span class="header-badge">GTA NSW/ACT 2026</span>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <h2>28 Micro-Moves for Chain Prompting in Geography</h2>
+        <p>Stop treating AI like a vending machine. Chain prompting transforms it from a shortcut tool into a cognitive co-worker that extends your professional capabilities.</p>
+        <p class="hero-sub">Each strategy shows you the vague prompt teachers instinctively type, then the geography-specific version that actually works.</p>
+    </div>
+</section>
+
+<section class="intro">
+    <div class="intro-box">
+        <h3>How to use this page</h3>
+        <p>These 28 strategies are organised into five phases of a chain prompting conversation. Work through them in order to build a resource from scratch, or filter by task type to find what you need right now.</p>
+        <p>Each card shows two prompts side by side. The <strong style="color:#b07070;">vague version</strong> is what you might type on instinct. The <strong style="color:var(--sage-dark);">specific version</strong> is the one that produces useful, geography-grounded output. Copy the specific version, adapt the bracketed details, and paste it into any AI tool.</p>
+        <div class="phases-strip">
+            <span class="phase-chip">1 <span>Set the Scene</span></span>
+            <span class="phase-chip">2 <span>Build the Foundation</span></span>
+            <span class="phase-chip">3 <span>Refine and Challenge</span></span>
+            <span class="phase-chip">4 <span>Differentiate and Support</span></span>
+            <span class="phase-chip">5 <span>Polish and Publish</span></span>
+        </div>
+    </div>
+</section>
+
+<section class="controls-wrap">
+    <div class="controls">
+        <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="searchInput" placeholder="Search strategies...">
+        </div>
+        <div class="filter-pills" id="filterPills">
+            <button class="filter-pill active" data-tag="all">All</button>
+            <button class="filter-pill" data-tag="fieldwork">Fieldwork</button>
+            <button class="filter-pill" data-tag="casestudy">Case Study</button>
+            <button class="filter-pill" data-tag="assessment">Assessment</button>
+            <button class="filter-pill" data-tag="resource">Resource</button>
+            <button class="filter-pill" data-tag="feedback">Feedback</button>
+        </div>
+        <div class="expand-btns">
+            <button class="expand-btn" id="expandAll">Expand all</button>
+            <button class="expand-btn" id="collapseAll">Collapse all</button>
+        </div>
+    </div>
+</section>
+
+<main class="main" id="mainContent">
+    <!-- Cards injected by JS -->
+</main>
+
+<div class="toast" id="toast">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    <span>Copied to clipboard</span>
+</div>
+
+<script>
+const DATA = [
+    {
+        phase: 1,
+        title: "Set the Scene",
+        subtitle: "Context, role, and constraints",
+        intro: "Begin by telling the AI who you are, what you need, and what to avoid. A few sentences of context here save you ten rounds of correction later.",
+        strategies: [
+            {
+                name: "Geography Teacher Persona",
+                vague: "Act as a geography teacher.",
+                specific: "You are an experienced Stage 5 Geography teacher in a NSW school. You teach the Changing Places unit to a mixed-ability Year 9 class. You value geographical inquiry, spatial thinking, and evidence-based reasoning. You are pragmatic about time constraints and sceptical of activities that look engaging but don't build geographical skills.",
+                why: "A detailed persona stops the AI defaulting to generic education advice and grounds every response in your actual teaching context.",
+                tags: ["resource", "assessment", "casestudy"]
+            },
+            {
+                name: "The Anti-Slop Constraint",
+                vague: "Make it good quality.",
+                specific: "Do not produce geography slop: text that uses correct terminology and reads fluently but contains no spatial reasoning, no scale connection, and no evidence weighed against alternatives. Every paragraph must demonstrate genuine geographical thinking, not just perform the surface features of geography.",
+                why: "This constraint directly targets the most common AI failure mode in geography — output that looks like the discipline but doesn't do what the discipline does.",
+                tags: ["resource", "assessment", "casestudy"]
+            },
+            {
+                name: "Acknowledge the Audience",
+                vague: "This is for Year 9.",
+                specific: "The audience is Year 9 students (14–15 years old) in a NSW school. They have completed Stage 4 Geography and are familiar with basic geographical concepts (place, space, environment, interconnection). They can read and interpret simple thematic maps but have limited experience with statistical data or GIS. Write at their level — direct, peer-appropriate, no hand-holding, but define any Tier 3 vocabulary on first use.",
+                why: "Specifying what students already know and can do prevents the AI from pitching too high or too low.",
+                tags: ["resource", "assessment", "casestudy", "fieldwork"]
+            },
+            {
+                name: "The Anti-Vending Machine Shift",
+                vague: "Create a lesson on urbanisation.",
+                specific: "Before you create anything, ask me five clarifying questions about my class context, the specific content focus within this topic, the resources I have available, what students already know, and how this lesson fits into the broader unit sequence.",
+                why: "Forces the AI to gather context before producing output, which eliminates the generic first draft problem.",
+                tags: ["resource", "assessment"]
+            },
+            {
+                name: "Negative Constraints for Geography",
+                vague: "Don't make it boring.",
+                specific: "Do not produce generic impact lists. Do not describe geographical processes without connecting them to specific places. Do not use 'advantages and disadvantages' as an organising framework — use geographical concepts (scale, interconnection, spatial distribution, environmental management) instead. Do not reference case studies you cannot verify.",
+                why: "Geography-specific negative constraints catch the most common AI default patterns before they appear.",
+                tags: ["resource", "casestudy", "assessment"]
+            },
+            {
+                name: "The Fieldwork Anchor",
+                vague: "Include a fieldwork activity.",
+                specific: "Design a fieldwork activity for [location/site]. Students will be on-site for [duration]. Available equipment: [list]. The fieldwork must generate primary data that students will process and analyse back in the classroom. Specify: what data to collect, what method to use, what recording sheet to bring, and how the data connects to the inquiry question.",
+                why: "Fieldwork prompts fail when they don't specify site, equipment, and time constraints. This forces the AI to design something you can actually run.",
+                tags: ["fieldwork"]
+            }
+        ]
+    },
+    {
+        phase: 2,
+        title: "Build the Foundation",
+        subtitle: "Syllabus alignment, inquiry structure, and source quality",
+        intro: "Reply to the same chat. Add your specific context: syllabus outcomes, the inquiry question, what spatial data you want students to work with. These strategies anchor the AI in your professional standards.",
+        strategies: [
+            {
+                name: "NSW Syllabus Alignment",
+                vague: "Align this to the syllabus.",
+                specific: "Map this lesson directly to the NSW Geography K–10 Syllabus. Identify the specific outcome codes (e.g. GE5-4, GE5-7) this lesson addresses. For each outcome, show me exactly where in the lesson students are practising that skill. If any outcome is only superficially addressed, flag it.",
+                why: "The AI needs to show its working. Asking it to map outcomes to specific lesson moments catches superficial alignment.",
+                tags: ["resource", "assessment"]
+            },
+            {
+                name: "Geographical Inquiry Structure",
+                vague: "Structure this as an inquiry.",
+                specific: "Structure this sequence using the geographical inquiry process: acquiring information, processing data, analysing patterns, applying concepts, communicating understanding, reflecting on findings. For each stage, identify the geographical skill students are practising, not just the activity they are doing.",
+                why: "Geography lessons often have activities at every stage but geographical skills at none. This prompt forces the AI to name the skill, not just the task.",
+                tags: ["resource", "assessment"]
+            },
+            {
+                name: "The Spatial Thinking Check",
+                vague: "Include some map work.",
+                specific: "This lesson must require students to think spatially. Identify at least two points where students must interpret, create, or annotate spatial data (maps, satellite images, GIS output, spatial graphs). For each, specify what geographical question the spatial data helps answer — not just 'look at this map' but 'use this map to explain why [pattern] occurs here and not there.'",
+                why: "Map work without a geographical question is decoration. This prompt ensures spatial data serves analytical purposes.",
+                tags: ["resource", "fieldwork", "casestudy"]
+            },
+            {
+                name: "The Misconception Scan",
+                vague: "List common mistakes.",
+                specific: "List five common geographical misconceptions students hold about [topic] at this stage. For each, explain what students typically think, why it's wrong, and what the correct geographical understanding is. Then suggest one question I can ask at the start of the lesson to surface each misconception.",
+                why: "Geography has persistent misconceptions (e.g. development is linear, natural hazards are purely natural). Surfacing them before teaching prevents the AI from accidentally reinforcing them.",
+                tags: ["resource", "assessment"]
+            },
+            {
+                name: "The Cognitive Conflict Hook",
+                vague: "Start with something engaging.",
+                specific: "Create a 'cognitive conflict' hook for this lesson: a piece of geographical data, an image, or a question that contradicts what students think they know about [topic]. The hook must be factually accurate and specific to a real place. Explain what misconception it challenges and how to transition from the hook into the lesson's inquiry question.",
+                why: "The best geography hooks use real spatial data to create surprise. This prompt stops the AI producing a generic 'fun fact' opener.",
+                tags: ["resource"]
+            },
+            {
+                name: "Case Study Source Check",
+                vague: "Give me a case study on flooding.",
+                specific: "I need a case study on [topic] for Stage [X] Geography. Suggest three options from different scales (local, national, global). For each, tell me: the specific event or location, the date or time period, why it's a strong choice pedagogically, and what data sources I could use (named reports, datasets, news coverage). Do not suggest any case study you cannot verify with specific, checkable details.",
+                why: "AI frequently fabricates or conflates case study details. Requiring verifiable specifics at the selection stage catches hallucination before you build a lesson around it.",
+                tags: ["casestudy", "resource"]
+            }
+        ]
+    },
+    {
+        phase: 3,
+        title: "Refine and Challenge",
+        subtitle: "Push beyond the first draft",
+        intro: "This is the innovation phase. Challenge the AI's logic, introduce geographical complexity, and turn a competent first draft into something that genuinely develops geographical thinking.",
+        strategies: [
+            {
+                name: "The Devil's Advocate",
+                vague: "How could I improve this?",
+                specific: "Look at this lesson through the eyes of three students: one who is disengaged and looking for shortcuts, one who is a strong geographical thinker, and one who has limited literacy but good spatial reasoning. For each student, tell me: what they would actually experience in this lesson, where they would get stuck or tune out, and one specific change that would improve the lesson for them.",
+                why: "Generic improvement advice is useless. Viewing the lesson through specific student lenses produces targeted, actionable changes.",
+                tags: ["resource", "assessment"]
+            },
+            {
+                name: "The Geography Slop Detector",
+                vague: "Check this is high quality.",
+                specific: "Read this resource and identify any geography slop: paragraphs that use correct terminology and read fluently but contain no spatial reasoning, no connection to specific places, no evidence weighed against alternatives, and no analytical decisions. For each instance, explain what's missing and rewrite it to demonstrate genuine geographical thinking.",
+                why: "This is the quality control prompt. It catches AI-generated content that performs geography without doing geography.",
+                tags: ["resource", "casestudy", "assessment"]
+            },
+            {
+                name: "Scale Shift Challenge",
+                vague: "Add more depth.",
+                specific: "Take the core content of this lesson and add a scale-shift activity: students examine the same geographical process at a different scale (local → national → global, or vice versa). Design a specific task where students must explain how the process operates differently at each scale, and what geographical factors account for the difference.",
+                why: "Moving between scales is one of geography's signature intellectual moves. This prompt adds genuine depth rather than just more content.",
+                tags: ["resource", "casestudy"]
+            },
+            {
+                name: "Competing Perspectives Task",
+                vague: "Include different viewpoints.",
+                specific: "Design a structured task where students evaluate two competing geographical perspectives on [issue/topic]. Each perspective must be grounded in a real stakeholder position (e.g. government planner, local resident, environmental scientist, developer). Provide students with a brief summary of each perspective and a framework for evaluating which perspective is better supported by geographical evidence.",
+                why: "Geography requires evaluation, not just description. This prompt structures genuine evaluative thinking rather than producing a 'for and against' list.",
+                tags: ["resource", "casestudy", "assessment"]
+            },
+            {
+                name: "Authentic Data Integration",
+                vague: "Use real data.",
+                specific: "Find a real, publicly available dataset, map, or satellite image that students could use to investigate [topic/question]. Provide: the exact source (name and URL), what the data shows, a specific analytical task students should complete with it, and one question the data cannot answer (to build critical data literacy). Do not invent or approximate data.",
+                why: "Geography lessons are strongest when students work with real spatial data. This prompt forces the AI to find (not fabricate) genuine sources.",
+                tags: ["resource", "fieldwork", "casestudy"]
+            },
+            {
+                name: "Localise the Learning",
+                vague: "Make it relevant to students.",
+                specific: "Adapt this lesson so the core geographical concept is explored through a local example within the Sydney basin / NSW context. The local example must be specific (named suburb, river catchment, coastline section, or LGA), connected to real data or observable features, and accessible for a potential fieldwork visit. Explain how the local example connects to the broader geographical process being studied.",
+                why: "Localisation makes geography tangible. Naming a specific local context stops the AI producing something vaguely 'relevant' but actually generic.",
+                tags: ["resource", "fieldwork"]
+            }
+        ]
+    },
+    {
+        phase: 4,
+        title: "Differentiate and Support",
+        subtitle: "Targeted adjustments without losing the geography",
+        intro: "Your class includes a wide range of learners. These strategies differentiate without removing the geographical thinking. Foundation is not easier work. Extension is not more work.",
+        strategies: [
+            {
+                name: "The Parallel Fieldwork Task",
+                vague: "Make an easier version.",
+                specific: "Create a foundation version of this fieldwork task that: uses the same site and inquiry question, collects the same type of data, but provides a structured recording sheet with pre-labelled columns, sentence starters for observations, and a simplified data processing method (e.g. tally rather than statistical analysis). The geographical thinking must remain — students must still interpret patterns in their data.",
+                why: "Fieldwork differentiation often removes the geography. This prompt scaffolds the process while keeping the inquiry intact.",
+                tags: ["fieldwork", "feedback"]
+            },
+            {
+                name: "Geography Vocabulary Bridge",
+                vague: "Define the key terms.",
+                specific: "Identify the 8–10 geographical terms in this resource that are essential for understanding. For each: provide a student-friendly definition (one sentence, no jargon), an example grounded in the specific topic being studied (not a generic example), and a visual cue or spatial reference where possible. Format as a reference card students can keep alongside the resource.",
+                why: "Geography vocabulary is spatial and conceptual. Generic definitions don't help — students need definitions anchored to the specific context they're studying.",
+                tags: ["resource", "feedback", "casestudy"]
+            },
+            {
+                name: "Extension via Geographical Reasoning",
+                vague: "Add an extension activity.",
+                specific: "Create an extension task for students who have completed the core activity. The extension must require deeper geographical reasoning, not more volume. Options: analyse the same phenomenon at a different scale, evaluate a competing interpretation of the data, apply the concept to an unfamiliar geographical context, or design their own inquiry question using the same evidence base. The extension should take 10–15 minutes and be completable independently.",
+                why: "Extension that adds volume punishes speed. Extension that deepens reasoning rewards geographical thinking.",
+                tags: ["resource", "feedback"]
+            },
+            {
+                name: "EAL/D Geographical Scaffolding",
+                vague: "Make this accessible for EAL/D students.",
+                specific: "Adapt this resource for EAL/D students who are [Phase] on the EAL/D learning progression. Simplify the sentence structures and define key geographical terms on first use, but do not remove the geographical thinking. Add: a bilingual glossary for the 5 most important terms (English + [language]), sentence starters that model geographical reasoning ('This pattern shows…', 'The evidence suggests…', 'One factor that explains this is…'), and visual supports (maps, diagrams, icons) where text currently carries the full load.",
+                why: "EAL/D scaffolding in geography must preserve spatial and analytical thinking. Simplifying the language without simplifying the geography is the core challenge.",
+                tags: ["feedback", "resource"]
+            },
+            {
+                name: "The Worked Example (with Slop Contrast)",
+                vague: "Show students what a good answer looks like.",
+                specific: "Generate a worked example for this task: a model response at the expected standard for [year group]. Annotate the model to show students what makes it effective — highlight the geographical evidence, the spatial reasoning, the use of scale, and the evaluative language. Then generate a second version that looks competent but is actually geography slop: correct terminology, fluent writing, but no genuine geographical thinking. Annotate the differences between the two.",
+                why: "Showing students the contrast between genuine geographical thinking and geography slop builds their own quality radar, not just their ability to mimic a format.",
+                tags: ["assessment", "resource", "feedback"]
+            }
+        ]
+    },
+    {
+        phase: 5,
+        title: "Polish and Publish",
+        subtitle: "Quality control, formatting, and reflection",
+        intro: "Make this resource classroom-ready. Use the AI as a critical friend to evaluate your work, then reformat it into something you can print or share tomorrow.",
+        strategies: [
+            {
+                name: "The Tone Scrub",
+                vague: "Clean it up.",
+                specific: "Remove all AI-isms from this resource: 'delve', 'tapestry', 'landscape of', 'it is important to note', 'in conclusion', 'plays a crucial role', 'myriad', 'multifaceted'. Rewrite in a direct, professional voice appropriate for [audience: students / teachers / parents]. Remove all emojis. Check that the geographical content survived the rewrite.",
+                why: "AI writing has a recognisable register. Scrubbing it makes the resource sound like it was written by a teacher, not generated by a machine.",
+                tags: ["resource", "casestudy", "assessment"]
+            },
+            {
+                name: "The Accuracy Audit",
+                vague: "Check this is correct.",
+                specific: "Audit this resource for geographical accuracy. Check: all place names, dates, statistics, and factual claims. Flag any claim you cannot verify with high confidence. Check that geographical processes are described correctly and that cause-and-effect relationships are accurately represented. If you find errors or uncertain claims, list them with your confidence level and suggest how I can verify them independently.",
+                why: "Geography resources depend on factual accuracy. AI hallucinates statistics, conflates events, and misdescribes processes. An explicit audit prompt catches these before students see them.",
+                tags: ["resource", "casestudy", "assessment"]
+            },
+            {
+                name: "Resource Packaging",
+                vague: "Format this nicely.",
+                specific: "Reformat this resource as a classroom-ready document I can print or share digitally. Include: a clear title, the learning intention, numbered instructions (one action per step), any maps or diagrams referenced (described with placeholders I can replace), a space for student responses, and the source citations for any data or case studies used. Format for A4, with adequate white space for students who need visual clarity.",
+                why: "The final resource needs to look professional and be immediately usable without further editing.",
+                tags: ["resource", "fieldwork", "assessment"]
+            },
+            {
+                name: "The Meta-Coach",
+                vague: "Any other advice?",
+                specific: "Look back at our entire conversation. Identify the three prompts I gave you that produced the best output and the one that produced the weakest. Explain what made the strong prompts effective and suggest how I should have phrased the weak one. If I wanted to create a similar geography resource next time, what would the most efficient prompting sequence look like?",
+                why: "This builds your own prompting skill over time. The AI reflects on the conversation so you learn what works for geography-specific requests.",
+                tags: ["resource", "assessment", "casestudy", "fieldwork", "feedback"]
+            },
+            {
+                name: "The Implementation Check",
+                vague: "Is this ready to use?",
+                specific: "Before I use this resource, answer honestly: (1) Does every activity require students to think geographically, or are any steps just administrative? (2) Could a student complete this resource by copying from a textbook or AI without engaging in spatial reasoning? If yes, which parts? (3) Are there any points where the instructions are ambiguous and students will need to ask me what to do? (4) Is this realistic for a [duration] lesson with [class size] students?",
+                why: "The final quality gate. Forces the AI to critique its own output against practical classroom constraints before you commit to using it.",
+                tags: ["resource", "assessment", "fieldwork"]
+            }
+        ]
+    }
+];
+
+// ── Render ──
+function render() {
+    const container = document.getElementById('mainContent');
+    let html = '';
+
+    DATA.forEach((phase, pi) => {
+        html += `<div class="phase-card${pi === 0 ? ' expanded' : ''}" data-phase="${phase.phase}">
+            <div class="phase-header" onclick="togglePhase(this)">
+                <div class="phase-num">${phase.phase}</div>
+                <div class="phase-title">
+                    <h3>${phase.title}</h3>
+                    <p>${phase.subtitle}</p>
+                </div>
+                <svg class="phase-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="phase-body">
+                <div class="phase-intro">${phase.intro}</div>
+                ${phase.strategies.map((s, si) => {
+                    const id = `s-${pi}-${si}`;
+                    const searchable = `${s.name} ${s.vague} ${s.specific} ${s.why} ${s.tags.join(' ')}`.toLowerCase();
+                    return `<div class="strategy" data-searchable="${searchable}" data-tags="${s.tags.join(',')}">
+                        <div class="strategy-header" onclick="toggleStrategy(this)">
+                            <span class="strategy-name">${s.name}</span>
+                            <span class="strategy-tags">${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}</span>
+                            <svg class="strategy-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                        <div class="strategy-body">
+                            <div class="prompt-pair">
+                                <div class="prompt-box prompt-vague">
+                                    <div class="prompt-label"><span class="dot"></span> Vague prompt</div>
+                                    <div class="prompt-text">${s.vague}</div>
+                                </div>
+                                <div class="prompt-box prompt-specific">
+                                    <div class="prompt-label"><span class="dot"></span> Geography-specific prompt</div>
+                                    <div class="prompt-text" id="${id}">${s.specific}</div>
+                                    <button class="copy-btn" onclick="copyText('${id}', this)">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="why-line"><strong>Why it matters:</strong> ${s.why}</div>
+                        </div>
+                    </div>`;
+                }).join('')}
+            </div>
+        </div>`;
+    });
+
+    html += `<div class="no-results" id="noResults"><p>No strategies found matching your search or filter.</p></div>`;
+
+    html += `<div class="golden-rule">
+        <h3>The Golden Rule</h3>
+        <p>AI is a cognitive co-worker, not an answer machine. Your geographical expertise, your knowledge of your students, and your professional judgement must guide every interaction. <strong>The more you put in, the more you get out.</strong></p>
+    </div>`;
+
+    container.innerHTML = html;
+}
+
+// ── Interactions ──
+function togglePhase(el) {
+    el.closest('.phase-card').classList.toggle('expanded');
+}
+
+function toggleStrategy(el) {
+    el.closest('.strategy').classList.toggle('open');
+}
+
+function copyText(id, btn) {
+    const el = document.getElementById(id);
+    navigator.clipboard.writeText(el.textContent).then(() => {
+        const orig = btn.innerHTML;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        const toast = document.getElementById('toast');
+        toast.classList.add('visible');
+        setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.classList.remove('copied');
+            toast.classList.remove('visible');
+        }, 2000);
+    });
+}
+
+// ── Search ──
+document.getElementById('searchInput').addEventListener('input', function() {
+    applyFilters();
+});
+
+// ── Filter pills ──
+document.getElementById('filterPills').addEventListener('click', function(e) {
+    const pill = e.target.closest('.filter-pill');
+    if (!pill) return;
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    applyFilters();
+});
+
+function applyFilters() {
+    const search = document.getElementById('searchInput').value.toLowerCase().trim();
+    const activeTag = document.querySelector('.filter-pill.active').dataset.tag;
+    const strategies = document.querySelectorAll('.strategy');
+    const phases = document.querySelectorAll('.phase-card');
+    let anyVisible = false;
+
+    strategies.forEach(s => {
+        const matchSearch = !search || s.dataset.searchable.includes(search);
+        const matchTag = activeTag === 'all' || s.dataset.tags.includes(activeTag);
+        const show = matchSearch && matchTag;
+        s.classList.toggle('hidden', !show);
+        if (show) anyVisible = true;
+    });
+
+    phases.forEach(p => {
+        const visibleStrategies = p.querySelectorAll('.strategy:not(.hidden)');
+        p.style.display = visibleStrategies.length === 0 ? 'none' : '';
+        if (visibleStrategies.length > 0 && (search || activeTag !== 'all')) {
+            p.classList.add('expanded');
+        }
+    });
+
+    document.getElementById('noResults').classList.toggle('visible', !anyVisible);
+}
+
+// ── Expand/Collapse ──
+document.getElementById('expandAll').addEventListener('click', () => {
+    document.querySelectorAll('.phase-card').forEach(p => {
+        if (p.style.display !== 'none') p.classList.add('expanded');
+    });
+});
+
+document.getElementById('collapseAll').addEventListener('click', () => {
+    document.querySelectorAll('.phase-card').forEach(p => p.classList.remove('expanded'));
+});
+
+// ── Init ──
+render();
+</script>
+
+<footer class="footer">
+    <p>The Geography Prompt Pathway &middot; GTA NSW/ACT Conference 2026</p>
+    <p style="margin-top:0.4rem;">AI outputs always require your professional geographical judgement.</p>
+</footer>
+
+</body>
+</html>
