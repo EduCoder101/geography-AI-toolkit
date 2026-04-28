@@ -22,7 +22,7 @@
             --off-white: #fcfbf8;
             --white: #ffffff;
             --text: #2a2a2a;
-            --text-light: #555555;
+            --text-light: #7a7a7a;
             --border: #e8e4de;
         }
 
@@ -46,7 +46,7 @@
         }
 
         .header-inner {
-            max-width: 1280px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -74,12 +74,12 @@
             text-align: center;
         }
 
-        .hero-inner { max-width: 850px; margin: 0 auto; }
+        .hero-inner { max-width: 750px; margin: 0 auto; }
         .hero h2 { font-size: 2.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
         .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.7; }
 
         .main {
-            max-width: 1100px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 2.5rem 2rem 4rem;
         }
@@ -344,6 +344,31 @@
             .main { padding: 2rem 1.5rem 3rem; }
             .block, .scenario { padding: 1.5rem; }
         }
+
+        /* ─── HELP SYSTEM ─── */
+        .help-btn {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.35);
+            color: #fff; font-family: 'Crimson Pro', Georgia, serif; font-size: 14px; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease; margin-left: 12px; flex-shrink: 0;
+        }
+        .help-btn:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); }
+        .help-btn.active { background: var(--sand); color: var(--navy); border-color: var(--sand); }
+        .help-tip {
+            display: none; background: linear-gradient(135deg, var(--sage-light), #f0f7f2);
+            border: 1.5px solid rgba(90,158,114,0.3); border-radius: 10px;
+            padding: 18px 20px; margin-bottom: 1.5rem; font-size: 0.88rem; line-height: 1.7;
+            color: var(--text); position: relative; animation: helpFadeIn 0.25s ease;
+        }
+        .help-tip.visible { display: block; }
+        @keyframes helpFadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .help-tip-title { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .help-tip-title svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--sage-dark); }
+        .help-tip p { margin-bottom: 8px; } .help-tip p:last-child { margin-bottom: 0; }
+        .help-tip strong { color: var(--sage-dark); }
+        .help-tip-dismiss { position: absolute; top: 10px; right: 12px; background: none; border: none; font-size: 16px; color: var(--text-light); cursor: pointer; padding: 2px 6px; line-height: 1; }
+        .help-tip-dismiss:hover { color: var(--navy); }
     </style>
 </head>
 <body>
@@ -356,6 +381,7 @@
             <a href="master-prompts.html">Master Prompts</a>
             <a href="geography-prompt-pathway.html">Prompt Pathway</a>
             <a href="how-ai-works.html">How AI Works</a>
+            <button class="help-btn" id="help-toggle" onclick="toggleHelp()" title="Show help tips">?</button>
         </nav>
     </div>
 </header>
@@ -368,6 +394,17 @@
 </section>
 
 <main class="main">
+
+    <!-- Help tip -->
+    <div class="help-tip" data-help="task-design">
+        <button class="help-tip-dismiss" onclick="dismissHelp(this)">&times;</button>
+        <div class="help-tip-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            Task design principles
+        </div>
+        <p>Try starting with the <strong>worked example</strong> further down the page (the Year 9 urbanisation scenario), then reading upward. Seeing the framework applied to a real task makes the theory concrete.</p>
+        <p>The <strong>three tiers</strong> (speed bumps, structural protections, detection layers) are the key takeaway. If you only do one thing, scroll down to the "Where to start" section: adding source annotations to your next assessment is the highest-value, lowest-effort change you can make.</p>
+    </div>
 
     <!-- The core problem -->
     <div class="block">
@@ -495,6 +532,22 @@
 <footer class="footer">
     <p>Geography AI Toolkit &middot; <a href="index.html">Home</a> &middot; GTA NSW/ACT Conference 2026</p>
 </footer>
+
+<script>
+var helpVisible = false;
+function toggleHelp() {
+    helpVisible = !helpVisible;
+    var tips = document.querySelectorAll('.help-tip');
+    for (var i = 0; i < tips.length; i++) {
+        if (helpVisible) tips[i].classList.add('visible');
+        else tips[i].classList.remove('visible');
+    }
+    document.getElementById('help-toggle').classList.toggle('active', helpVisible);
+}
+function dismissHelp(btn) {
+    btn.parentElement.classList.remove('visible');
+}
+</script>
 
 </body>
 </html>

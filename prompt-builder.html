@@ -18,7 +18,7 @@
             --accent-color:     #5a9e72;   /* sage */
             --accent-teal:      #5a9e72;   /* sage (unified) */
             --text-dark:        #2a2a2a;
-            --text-light:       #555555;
+            --text-light:       #7a7a7a;
             --border-color:     #e8e4de;
             --bg-light:         #fcfbf8;
             --shadow:           0 4px 24px rgba(44,62,80,0.08);
@@ -40,7 +40,7 @@
         }
 
         .pb-container {
-            max-width: 1280px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 1rem 4rem;
         }
@@ -95,7 +95,7 @@
         .pb-header .tagline {
             font-size: 1.25rem;
             color: var(--text-light);
-            max-width: 800px;
+            max-width: 680px;
             margin: 0 auto;
             line-height: 1.65;
             font-style: normal;
@@ -1041,6 +1041,33 @@
             .pb-header h1 { font-size: 2.2rem; }
             .cp-cycle-svg { width: 160px; height: 74px; }
         }
+
+        /* ─── HELP SYSTEM ─── */
+        .help-btn-pb {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: rgba(44,62,80,0.08); border: 1.5px solid rgba(44,62,80,0.2);
+            color: var(--primary-color); font-family: 'Crimson Pro', Georgia, serif; font-size: 14px; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease; flex-shrink: 0;
+        }
+        .help-btn-pb:hover { background: rgba(44,62,80,0.15); border-color: rgba(44,62,80,0.35); }
+        .help-btn-pb.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .help-tip {
+            display: none; background: linear-gradient(135deg, #eaf5ee, #f0f7f2);
+            border: 1.5px solid rgba(90,158,114,0.3); border-radius: 10px;
+            padding: 18px 20px; margin-bottom: 1.5rem; font-size: 0.88rem; line-height: 1.7;
+            color: var(--text-dark); position: relative; animation: helpFadeIn 0.25s ease;
+        }
+        .help-tip.visible { display: block; }
+        @keyframes helpFadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .help-tip-title { font-size: 0.92rem; font-weight: 700; color: var(--primary-color); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .help-tip-title svg { width: 16px; height: 16px; flex-shrink: 0; color: #5a9e72; }
+        .help-tip p { margin-bottom: 8px; } .help-tip p:last-child { margin-bottom: 0; }
+        .help-tip strong { color: #3d7a52; }
+        .help-tip-dismiss { position: absolute; top: 10px; right: 12px; background: none; border: none; font-size: 16px; color: var(--text-light); cursor: pointer; padding: 2px 6px; line-height: 1; }
+        .help-tip-dismiss:hover { color: var(--primary-color); }
+        .help-tip-inline { font-size: 0.85rem; background: #faf4ea; border-left: 3px solid #c4a67a; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 8px; }
+        .help-tip-inline-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #c4a67a; margin-bottom: 4px; }
     </style>
 </head>
 <body>
@@ -1048,10 +1075,11 @@
 
     <!-- Header -->
     <div class="pb-header">
-        <div style="display:flex;gap:1rem;justify-content:center;margin-bottom:1.25rem;">
+        <div style="display:flex;gap:1rem;justify-content:center;align-items:center;margin-bottom:1.25rem;">
             <a href="index.html" class="back-link">&larr; Home</a>
             <a href="master-prompts.html" class="back-link">Master Prompts</a>
             <a href="geography-prompt-pathway.html" class="back-link">Prompt Pathway</a>
+            <button class="help-btn-pb" id="help-toggle" onclick="toggleHelp()" title="Show help tips">?</button>
         </div>
         <h1>Differentiation Prompt Builder</h1>
         <p class="tagline">Answer a few questions about your resource and your students. We'll build you a ready-to-use differentiation prompt you can paste into any AI tool.</p>
@@ -1064,6 +1092,37 @@
             <div class="progress-fill" id="progressFill"></div>
         </div>
         <div class="progress-label" id="progressLabel">Step 1 of 6</div>
+    </div>
+
+    <!-- Page-level help tip -->
+    <div class="help-tip" data-help="prompt-builder">
+        <button class="help-tip-dismiss" onclick="dismissHelp(this)">&times;</button>
+        <div class="help-tip-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            Differentiation prompt builder
+        </div>
+        <p>This is a guided wizard. Answer each question, then click <strong>Next</strong> to move through the steps. The progress bar at the top shows where you are. At the end, the tool assembles a tailored differentiation prompt based on your answers, ready to copy and paste into any AI tool. You can go back to change answers at any point.</p>
+        <p>The steps adjust based on your choices, so the sequence may look slightly different depending on whether you choose to differentiate a resource or ideate strategies. This is by design.</p>
+        <div class="help-tip-inline">
+            <div class="help-tip-inline-label">Step 1: Differentiate a Resource vs. Ideate Differentiation Strategies</div>
+            <p style="margin:0;"><strong>Differentiate a Resource</strong> adapts the text, questions, or structure of an existing worksheet, reading, or task. <strong>Ideate Differentiation Strategies</strong> generates teaching approaches for how to structure learning differently around any topic. Choose Resource if you have something specific to adapt. Choose Strategies if you are planning.</p>
+        </div>
+        <div class="help-tip-inline" style="margin-top:8px;">
+            <div class="help-tip-inline-label">"Why does this matter?" toggles</div>
+            <p style="margin:0;">These expand a short explanation of the pedagogical principle behind each question. They are optional. If you already know why you are differentiating in a particular way, skip them.</p>
+        </div>
+        <div class="help-tip-inline" style="margin-top:8px;">
+            <div class="help-tip-inline-label">Resource text area (Step 5)</div>
+            <p style="margin:0;">Paste or type the full text of your resource here. The more complete the text, the better the AI can differentiate it. You can also <strong>upload</strong> a Word (.docx), PDF, or text file using the upload button below the text area. The tool will extract the text automatically. If the extraction misses formatting, you can edit the text before proceeding.</p>
+        </div>
+        <div class="help-tip-inline" style="margin-top:8px;">
+            <div class="help-tip-inline-label">Output options (Step 6)</div>
+            <p style="margin:0;">You have two choices to make. First, <strong>Build it for me</strong> assembles everything into a complete prompt, while <strong>I'll curate</strong> lets you pick and choose which elements to include. Then choose delivery: <strong>Master prompt</strong> produces a single prompt you paste once, while <strong>Chain prompt guide</strong> splits the work into sequential steps so you can review between them.</p>
+        </div>
+        <div class="help-tip-inline" style="margin-top:8px;">
+            <div class="help-tip-inline-label">Response checklist</div>
+            <p style="margin:0;">After you generate and get AI output, use this checklist to review it. These are the most common things that go wrong with AI-generated differentiation: support that oversimplifies, extension that just adds volume, and learning needs adjustments that feel bolted on.</p>
+        </div>
     </div>
 
     <!-- =====================
@@ -1786,6 +1845,22 @@
     </div>
 
 </div>
+
+<script>
+var helpVisible = false;
+function toggleHelp() {
+    helpVisible = !helpVisible;
+    var tips = document.querySelectorAll('.help-tip');
+    for (var i = 0; i < tips.length; i++) {
+        if (helpVisible) tips[i].classList.add('visible');
+        else tips[i].classList.remove('visible');
+    }
+    document.getElementById('help-toggle').classList.toggle('active', helpVisible);
+}
+function dismissHelp(btn) {
+    btn.parentElement.classList.remove('visible');
+}
+</script>
 
 <script>
 /**

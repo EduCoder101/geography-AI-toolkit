@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Prompts | Geography AI Toolkit</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,7 +22,7 @@
             --off-white: #fcfbf8;
             --white: #ffffff;
             --text: #2a2a2a;
-            --text-light: #555555;
+            --text-light: #7a7a7a;
             --border: #e8e4de;
         }
 
@@ -45,7 +46,7 @@
         }
 
         .header-inner {
-            max-width: 1280px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -73,14 +74,14 @@
             text-align: center;
         }
 
-        .hero-inner { max-width: 850px; margin: 0 auto; }
+        .hero-inner { max-width: 750px; margin: 0 auto; }
 
         .hero h2 { font-size: 2.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
 
         .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.7; }
 
         .main {
-            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2.5rem 2rem 4rem;
         }
@@ -183,52 +184,6 @@
         .field textarea.tall { min-height: 160px; }
 
         .field select { cursor: pointer; }
-
-        .outcome-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--sage-light);
-            border: 1px solid rgba(90, 158, 114, 0.25);
-            border-radius: 8px;
-            padding: 6px 10px;
-            font-size: 0.8rem;
-            line-height: 1.4;
-            max-width: 100%;
-        }
-
-        .chip-code {
-            font-weight: 700;
-            color: var(--sage-dark);
-            white-space: nowrap;
-        }
-
-        .chip-text {
-            color: var(--text);
-        }
-
-        .chip-remove {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            padding: 0 2px;
-            line-height: 1;
-            flex-shrink: 0;
-        }
-
-        .chip-remove:hover { color: #c0392b; }
-
-        .syllabus-note {
-            font-size: 0.78rem;
-            color: var(--text-light);
-            background: var(--sand-light);
-            border-radius: 6px;
-            padding: 6px 10px;
-            margin-top: 6px;
-            line-height: 1.45;
-        }
 
         .generate-row {
             display: flex;
@@ -394,109 +349,6 @@
             margin: 0 0 3rem;
         }
 
-        /* ─── TOOL CHOOSER CARDS ─── */
-        .tool-chooser {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 700px) {
-            .tool-chooser { grid-template-columns: 1fr; }
-        }
-
-        .tool-card {
-            background: var(--white);
-            border: 1.5px solid var(--border);
-            border-radius: 14px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.25s;
-            text-align: left;
-        }
-
-        .tool-card:hover {
-            border-color: var(--sage);
-            box-shadow: 0 6px 24px rgba(90,138,106,0.1);
-            transform: translateY(-2px);
-        }
-
-        .tool-card.active {
-            border-color: var(--sage);
-            background: var(--sage-light);
-        }
-
-        .tool-card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--sage-light);
-            color: var(--sage-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-        }
-
-        .tool-card.active .tool-card-icon {
-            background: var(--white);
-        }
-
-        .tool-card h4 {
-            font-size: 1.1rem;
-            color: var(--navy);
-            margin-bottom: 6px;
-            line-height: 1.3;
-        }
-
-        .tool-card p {
-            font-size: 0.82rem;
-            color: var(--text-light);
-            line-height: 1.55;
-        }
-
-        .tool-view { display: none; }
-        .tool-view.active { display: block; }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--sage-dark);
-            cursor: pointer;
-            margin-bottom: 1.25rem;
-            border: none;
-            background: none;
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        .back-link:hover { color: var(--navy); }
-
-        /* ─── FILE DROP ZONE ─── */
-        .file-drop-zone {
-            border: 1.5px dashed var(--border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            text-align: center;
-            font-size: 0.82rem;
-            color: var(--text-light);
-            margin-top: 8px;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .file-drop-zone:hover,
-        .file-drop-zone.dragover {
-            border-color: var(--sage);
-            background: var(--sage-light);
-            color: var(--sage-dark);
-        }
-
-        .file-drop-zone input[type="file"] { display: none; }
-
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -540,6 +392,33 @@
             .generate-row { flex-direction: column; gap: 0.75rem; align-items: stretch; }
             .generate-hint { text-align: center; }
         }
+
+        /* ─── HELP SYSTEM ─── */
+        .help-btn {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.35);
+            color: #fff; font-family: 'Crimson Pro', Georgia, serif; font-size: 14px; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease; margin-left: 12px; flex-shrink: 0;
+        }
+        .help-btn:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); }
+        .help-btn.active { background: var(--sand); color: var(--navy); border-color: var(--sand); }
+        .help-tip {
+            display: none; background: linear-gradient(135deg, var(--sage-light), #f0f7f2);
+            border: 1.5px solid rgba(90,158,114,0.3); border-radius: 10px;
+            padding: 18px 20px; margin-bottom: 1.5rem; font-size: 0.88rem; line-height: 1.7;
+            color: var(--text); position: relative; animation: helpFadeIn 0.25s ease;
+        }
+        .help-tip.visible { display: block; }
+        @keyframes helpFadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .help-tip-title { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .help-tip-title svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--sage-dark); }
+        .help-tip p { margin-bottom: 8px; } .help-tip p:last-child { margin-bottom: 0; }
+        .help-tip strong { color: var(--sage-dark); }
+        .help-tip-dismiss { position: absolute; top: 10px; right: 12px; background: none; border: none; font-size: 16px; color: var(--text-light); cursor: pointer; padding: 2px 6px; line-height: 1; }
+        .help-tip-dismiss:hover { color: var(--navy); }
+        .help-tip-inline { font-size: 0.85rem; background: var(--sand-light); border-left: 3px solid var(--sand-dark); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 8px; }
+        .help-tip-inline-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--sand-dark); margin-bottom: 4px; }
     </style>
 </head>
 <body>
@@ -552,6 +431,7 @@
             <a href="geography-prompt-pathway.html">Prompt Pathway</a>
             <a href="how-ai-works.html">How AI Works</a>
             <a href="task-design.html">Task Design</a>
+            <button class="help-btn" id="help-toggle" onclick="toggleHelp()" title="Show help tips">?</button>
         </nav>
     </div>
 </header>
@@ -565,43 +445,23 @@
 
 <main class="main">
 
-    <!-- ═══ TOOL CHOOSER ═══ -->
-    <div id="tool-chooser">
-        <div class="tool-chooser">
-            <div class="tool-card" onclick="showTool('mp1')">
-                <div class="tool-card-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-                </div>
-                <h4>Guide students' AI use</h4>
-                <p>Generate a structured table showing students how to use AI purposefully at each stage of their work. Includes AI Scale Levels and optional off-loading prompts.</p>
-            </div>
-            <div class="tool-card" onclick="showTool('mp2')">
-                <div class="tool-card-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                </div>
-                <h4>Audit a task for AI vulnerability</h4>
-                <p>Find out where students could use AI to bypass the geographical thinking. Get speed bumps, structural protections, and detection layers.</p>
-            </div>
-            <div class="tool-card" onclick="showTool('diff')">
-                <div class="tool-card-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect></svg>
-                </div>
-                <h4>Differentiate a geography resource</h4>
-                <p>Walk through questions about your resource and students, then get a tailored differentiation prompt covering support, extension, EAL/D, and neurodiversity.</p>
-            </div>
+    <!-- Page-level help tip -->
+    <div class="help-tip" data-help="master-prompts">
+        <button class="help-tip-dismiss" onclick="dismissHelp(this)">&times;</button>
+        <div class="help-tip-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            Master prompts
         </div>
+        <p>This page has two prompt generators plus a link to the Differentiation Prompt Builder. Scroll down to find each one, or jump directly from the home page.</p>
+        <p>The workflow is the same for both generators: fill in your details, click <strong>Generate prompt</strong>, then <strong>copy</strong> the result and paste it into any AI tool. The prompt engineering is already built in. You do not need to understand how the prompt works; just provide your task details and let the prompt do the rest.</p>
+        <p>Once you get your AI output, the green <strong>tips box below each generator</strong> has specific advice for refining it.</p>
     </div>
 
     <!-- ═══ MP1: Student Prompt Table ═══ -->
-    <div class="tool-view" id="view-mp1">
-    <button class="back-link" onclick="showChooser()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-        Back to all tools
-    </button>
     <div class="prompt-section" id="student-prompts">
         <div class="prompt-section-header">
             <div class="prompt-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
             </div>
             <div class="prompt-meta">
                 <h3>Guide students' AI use</h3>
@@ -609,6 +469,31 @@
             </div>
         </div>
         <p class="prompt-description">Generates a classroom-ready table showing students how to use AI purposefully at each stage of their work. You choose whether to include cognitive off-loading prompts as a teaching tool (so students learn to recognise the line) or produce a clean version with only the purposeful prompts.</p>
+
+        <!-- MP1 inline help tips -->
+        <div class="help-tip" data-help="mp1-tips">
+            <button class="help-tip-dismiss" onclick="dismissHelp(this)">&times;</button>
+            <div class="help-tip-inline">
+                <div class="help-tip-inline-label">AI Scale Level</div>
+                <p style="margin:0;">This controls how much AI use is permitted in the student prompt table. <strong>Level 1</strong> restricts students to asking AI to explain concepts only. <strong>Level 2</strong> (recommended starting point) allows brainstorming and planning but not writing. <strong>Level 3</strong> permits full collaboration with disclosure required.</p>
+            </div>
+            <div class="help-tip-inline" style="margin-top:8px;">
+                <div class="help-tip-inline-label">Task description</div>
+                <p style="margin:0;">Paste the full task sheet if you have it. The more detail you provide, the more specific the output will be. A brief description works too, but the prompts will be more generic.</p>
+            </div>
+            <div class="help-tip-inline" style="margin-top:8px;">
+                <div class="help-tip-inline-label">Cognitive off-loading toggle</div>
+                <p style="margin:0;">When set to <strong>Yes</strong>, the output includes a column showing what it looks like when AI does the thinking for the student. Use this as a teaching tool or class discussion starter. Set to <strong>No</strong> for a cleaner table you can hand directly to students.</p>
+            </div>
+            <div class="help-tip-inline" style="margin-top:8px;">
+                <div class="help-tip-inline-label">Generate prompt button</div>
+                <p style="margin:0;">This does not send anything to AI. It assembles your details into a ready-made prompt and displays it on screen. You then copy the prompt and paste it into whichever AI tool you prefer.</p>
+            </div>
+            <div class="help-tip-inline" style="margin-top:8px;">
+                <div class="help-tip-inline-label">Show full prompt / Collapse</div>
+                <p style="margin:0;">The generated prompt is long by design. The preview shows the first few lines. Click <strong>Show full prompt</strong> to see everything, or just click <strong>Copy prompt</strong> without expanding. You do not need to read the full prompt to use it.</p>
+            </div>
+        </div>
 
         <div class="prompt-form" id="form-mp1">
             <div class="form-grid">
@@ -627,49 +512,25 @@
                     <div class="hint">How much AI use is permitted?</div>
                     <select id="mp1-scale">
                         <option value="Level 1 (AI as Clarifier): Students may only ask AI to explain concepts or define terms. No task context shared.">Level 1 — AI as Clarifier</option>
-                        <option value="Level 2 (AI as Scaffolder): Students may use AI for brainstorming, planning, and outlining. All written content produced independently." selected="">Level 2 — AI as Scaffolder</option>
+                        <option value="Level 2 (AI as Scaffolder): Students may use AI for brainstorming, planning, and outlining. All written content produced independently." selected>Level 2 — AI as Scaffolder</option>
                         <option value="Level 3 (AI as Co-worker): Full collaboration permitted. Students must disclose AI use. Non-disclosure is the primary violation.">Level 3 — AI as Co-worker</option>
                     </select>
                 </div>
                 <div class="field">
-                    <label>Syllabus outcomes <span style="font-weight:400;color:var(--text-light);">(optional)</span></label>
-                    <div class="hint">Select your syllabus, then stage, then add outcomes.</div>
-                    <select id="mp1-syllabus" onchange="syllabusChanged()">
-                        <option value="">Select a syllabus...</option>
-                    <option value="geo-k10-2015">Geography K–10 (2015) — current syllabus</option><option value="geo-7-10-2024">Geography 7–10 (2024) — new syllabus</option><option value="geo-11-12-2022">Geography 11–12 (2022) — HSC</option></select>
-                </div>
-                <div class="field">
-                    <label>Stage / Year</label>
-                    <div class="hint">&nbsp;</div>
-                    <select id="mp1-stage" onchange="stageChanged()" disabled="">
-                        <option value="">Select a stage...</option>
-                    </select>
-                </div>
-                <div class="field full" id="outcome-picker-row" style="display:none;">
-                    <label>Add an outcome</label>
-                    <div class="hint">Select an outcome to add it. You can add from different syllabuses and stages.</div>
-                    <select id="mp1-outcome" onchange="outcomeAdded()">
-                        <option value="">Select an outcome to add...</option>
-                    </select>
-                </div>
-                <div class="field full" id="mp1-chips-row" style="display:none;">
-                    <label>Selected outcomes</label>
-                    <div id="mp1-chips" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;"></div>
+                    <label>Learning intentions <span style="font-weight:400;color:var(--text-light);">(optional)</span></label>
+                    <div class="hint">Outcomes or learning goals for this task</div>
+                    <input type="text" id="mp1-intentions" placeholder="e.g. GE5-4, GE5-7, GE5-8">
                 </div>
                 <div class="field full">
                     <label>Task description</label>
                     <div class="hint">Paste the full task sheet if possible. The more detail, the better the output.</div>
                     <textarea id="mp1-task" class="tall" placeholder="Describe what students are being asked to do, what they will submit, and any specific geographical content or skills involved..."></textarea>
-                    <div class="file-drop-zone" id="mp1-drop" onclick="document.getElementById('mp1-file').click()">
-                        Or drag and drop your task sheet here (PDF, Word, or text file)
-                        <input type="file" id="mp1-file" accept=".pdf,.doc,.docx,.txt,.rtf" onchange="handleFile(this, 'mp1-task')">
-                    </div>
                 </div>
                 <div class="field full">
                     <label>Include cognitive off-loading prompts?</label>
                     <div class="hint">Off-loading prompts show students what it looks like when AI does the thinking for them. Include them as a teaching tool, or leave them out for a cleaner student-facing table.</div>
                     <select id="mp1-offloading">
-                        <option value="yes" selected="">Yes — include as a teachable moment (full table with purposeful and off-loading columns)</option>
+                        <option value="yes" selected>Yes — include as a teachable moment (full table with purposeful and off-loading columns)</option>
                         <option value="no">No — purposeful prompts only (clean version for everyday use)</option>
                     </select>
                 </div>
@@ -703,18 +564,14 @@
             </ul>
         </div>
     </div>
-    </div><!-- end view-mp1 -->
+
+    <hr class="section-divider">
 
     <!-- ═══ MP2: Vulnerability Critique ═══ -->
-    <div class="tool-view" id="view-mp2">
-    <button class="back-link" onclick="showChooser()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-        Back to all tools
-    </button>
     <div class="prompt-section" id="vulnerability">
         <div class="prompt-section-header">
             <div class="prompt-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div class="prompt-meta">
                 <h3>Audit a task for AI vulnerability</h3>
@@ -722,6 +579,19 @@
             </div>
         </div>
         <p class="prompt-description">Shows you where students could bypass the geographical thinking with AI, so you can start your design thinking. The analysis is the beginning of the process, not the end: it helps you decide where to integrate AI purposefully, where to add structural protections, and how to build in opportunities for students to demonstrate the cognitive work they have done alongside their AI co-worker.</p>
+
+        <!-- MP2 inline help tips -->
+        <div class="help-tip" data-help="mp2-tips">
+            <button class="help-tip-dismiss" onclick="dismissHelp(this)">&times;</button>
+            <div class="help-tip-inline">
+                <div class="help-tip-inline-label">Constraints (optional)</div>
+                <p style="margin:0;">Tell the AI what you cannot change about this task. For example: "I cannot add fieldwork", "the task must stay under 1000 words", or "I only have one lesson for in-class work." This stops the AI from suggesting impractical changes.</p>
+            </div>
+            <div class="help-tip-inline" style="margin-top:8px;">
+                <div class="help-tip-inline-label">Task description</div>
+                <p style="margin:0;">Paste the full assessment task notification if possible, including marking criteria. The AI will check whether your rubric would catch geography slop. A brief summary works too, but the analysis will be less specific.</p>
+            </div>
+        </div>
 
         <div class="prompt-form" id="form-mp2">
             <div class="form-grid">
@@ -735,39 +605,10 @@
                     <div class="hint">e.g. "I cannot add fieldwork" or "I have one lesson for in-class work"</div>
                     <input type="text" id="mp2-context" placeholder="Any constraints on what you can change">
                 </div>
-                <div class="field">
-                    <label>Syllabus outcomes <span style="font-weight:400;color:var(--text-light);">(optional)</span></label>
-                    <div class="hint">Select your syllabus, then stage, then add outcomes.</div>
-                    <select id="mp2-syllabus" onchange="mp2SyllabusChanged()">
-                        <option value="">Select a syllabus...</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label>Stage / Year</label>
-                    <div class="hint">&nbsp;</div>
-                    <select id="mp2-stage" onchange="mp2StageChanged()" disabled>
-                        <option value="">Select a stage...</option>
-                    </select>
-                </div>
-                <div class="field full" id="mp2-outcome-picker-row" style="display:none;">
-                    <label>Add an outcome</label>
-                    <div class="hint">Select an outcome to add it.</div>
-                    <select id="mp2-outcome" onchange="mp2OutcomeAdded()">
-                        <option value="">Select an outcome to add...</option>
-                    </select>
-                </div>
-                <div class="field full" id="mp2-chips-row" style="display:none;">
-                    <label>Selected outcomes</label>
-                    <div id="mp2-chips" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;"></div>
-                </div>
                 <div class="field full">
                     <label>Task description</label>
                     <div class="hint">Paste the full assessment task. Include marking criteria if available.</div>
                     <textarea id="mp2-task" class="tall" placeholder="Paste your assessment task notification here..."></textarea>
-                    <div class="file-drop-zone" id="mp2-drop" onclick="document.getElementById('mp2-file').click()">
-                        Or drag and drop your task sheet here (PDF, Word, or text file)
-                        <input type="file" id="mp2-file" accept=".pdf,.doc,.docx,.txt,.rtf" onchange="handleFile(this, 'mp2-task')">
-                    </div>
                 </div>
             </div>
             <div class="generate-row">
@@ -799,18 +640,14 @@
             </ul>
         </div>
     </div>
-    </div><!-- end view-mp2 -->
+
+    <hr class="section-divider">
 
     <!-- ═══ Differentiation: Link to Prompt Builder ═══ -->
-    <div class="tool-view" id="view-diff">
-    <button class="back-link" onclick="showChooser()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-        Back to all tools
-    </button>
     <div class="prompt-section" id="differentiation">
         <div class="prompt-section-header">
             <div class="prompt-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
             </div>
             <div class="prompt-meta">
                 <h3>Differentiate a geography resource</h3>
@@ -821,7 +658,7 @@
 
         <a href="prompt-builder.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--sage) 0%,var(--sage-dark) 100%);color:var(--white);text-decoration:none;padding:0.8rem 1.75rem;border-radius:8px;font-size:0.95rem;font-weight:700;transition:all 0.2s;box-shadow:0 3px 10px rgba(90,158,114,0.25);margin-bottom:1rem;">
             Open the Differentiation Prompt Builder
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
 
         <div class="tips-box">
@@ -834,362 +671,35 @@
             </ul>
         </div>
     </div>
-    </div><!-- end view-diff -->
 
 </main>
 
 <div class="toast" id="toast">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
     <span>Copied to clipboard</span>
 </div>
 
 <footer class="footer">
-    <p>Geography AI Toolkit · <a href="index.html">Home</a> · GTA NSW/ACT Conference 2026</p>
+    <p>Geography AI Toolkit &middot; <a href="index.html">Home</a> &middot; GTA NSW/ACT Conference 2026</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth.browser.min.js.download"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.min.js.download"></script>
 <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+var helpVisible = false;
+function toggleHelp() {
+    helpVisible = !helpVisible;
+    var tips = document.querySelectorAll('.help-tip');
+    for (var i = 0; i < tips.length; i++) {
+        if (helpVisible) tips[i].classList.add('visible');
+        else tips[i].classList.remove('visible');
+    }
+    document.getElementById('help-toggle').classList.toggle('active', helpVisible);
+}
+function dismissHelp(btn) {
+    btn.parentElement.classList.remove('visible');
+}
 </script>
 
 <script>
-
-// ─── Syllabus Outcome Data ───
-const SYLLABUS_DATA = {
-  "geo-k10-2015": {
-    label: "Geography K\u201310 (2015) \u2014 current syllabus",
-    shortLabel: "K\u201310 (2015)",
-    note: "Currently being taught. Will be replaced by the 2024 syllabus from 2027.",
-    stages: {
-      "Stage 4": [
-        { code: "GE4-1", text: "locates and describes the diverse features and characteristics of a range of places and environments" },
-        { code: "GE4-2", text: "describes processes and influences that form and transform places and environments" },
-        { code: "GE4-3", text: "explains interactions between people, places and environments" },
-        { code: "GE4-4", text: "accounts for perspectives of people and organisations on a range of geographical issues" },
-        { code: "GE4-5", text: "discusses management of places and environments for their future sustainability" },
-        { code: "GE4-6", text: "describes reasons for differences in human wellbeing" },
-        { code: "GE4-7", text: "applies geographical tools to acquire and process geographical information" },
-        { code: "GE4-8", text: "selects and uses written, oral and/or graphic forms to communicate geographical information" }
-      ],
-      "Stage 5": [
-        { code: "GE5-1", text: "explains the diverse features and characteristics of a range of places and environments" },
-        { code: "GE5-2", text: "explains processes and influences that form and transform places and environments" },
-        { code: "GE5-3", text: "analyses interactions between people, places and environments" },
-        { code: "GE5-4", text: "assesses perspectives of people and organisations on a range of geographical issues" },
-        { code: "GE5-5", text: "evaluates management strategies for places and environments for their future sustainability" },
-        { code: "GE5-6", text: "explains reasons for, and consequences of, differences in human wellbeing and ways to improve human wellbeing" },
-        { code: "GE5-7", text: "selects and applies appropriate geographical tools to acquire and process geographical information" },
-        { code: "GE5-8", text: "selects and uses appropriate written, oral and graphic forms to communicate geographical information for a range of audiences" }
-      ]
-    }
-  },
-  "geo-7-10-2024": {
-    label: "Geography 7\u201310 (2024) \u2014 new syllabus",
-    shortLabel: "7\u201310 (2024)",
-    note: "Implementation from 2027. Schools may adopt early during 2025\u20132026 planning phase.",
-    stages: {
-      "Stage 4": [
-        { code: "GE4-DFC-01", text: "locates the diverse features and describes the characteristics of a range of places and environments" },
-        { code: "GE4-PRI-01", text: "explains the processes and interactions that change people, places and environments" },
-        { code: "GE4-PER-01", text: "examines and describes the perspectives of people and organisations on a range of geographical issues" },
-        { code: "GE4-MAN-01", text: "explains the management and protection of places and environments" },
-        { code: "GE4-APC-01", text: "explains Aboriginal Peoples\u2019 Custodianship, care and management of Country" },
-        { code: "GE4-TAP-01", text: "selects and uses geographical tools to acquire and process geographical information" },
-        { code: "GE4-COM-01", text: "uses concepts and terminology to communicate geographical information for a range of purposes, audiences and contexts" }
-      ],
-      "Stage 5": [
-        { code: "GE5-DFC-01", text: "explains how the diverse features and characteristics of a range of places and environments change over time" },
-        { code: "GE5-PRI-01", text: "analyses the processes and interactions that transform people, places and environments" },
-        { code: "GE5-PER-01", text: "accounts for the perspectives of people and organisations on a range of geographical opportunities and challenges" },
-        { code: "GE5-MAN-01", text: "assesses different approaches to the management and protection of places and environments" },
-        { code: "GE5-APC-01", text: "analyses how Aboriginal Peoples\u2019 Custodianship of Country supports environmental management and enhances Community wellbeing" },
-        { code: "GE5-TAP-01", text: "applies and evaluates a range of geographical tools to acquire and process geographical information" },
-        { code: "GE5-COM-01", text: "selects and applies concepts and terminology to communicate geographical information for a range of purposes, audiences and contexts" }
-      ]
-    }
-  },
-  "geo-11-12-2022": {
-    label: "Geography 11\u201312 (2022) \u2014 HSC",
-    shortLabel: "11\u201312 (2022)",
-    note: "Currently being taught. First examined in the HSC in 2025.",
-    stages: {
-      "Year 11": [
-        { code: "GE-11-01", text: "examines places, environments and natural and human phenomena, for their characteristics, spatial patterns, interactions and changes over time" },
-        { code: "GE-11-02", text: "explains geographical processes and influences, at a range of scales, that form and transform places and environments" },
-        { code: "GE-11-03", text: "explains geographical opportunities and challenges, and varying perspectives and responses" },
-        { code: "GE-11-04", text: "assesses responses and management strategies, at a range of scales, for sustainability" },
-        { code: "GE-11-05", text: "analyses and synthesises relevant geographical information from a variety of sources" },
-        { code: "GE-11-06", text: "identifies geographical methods used in geographical inquiry and their relevance in the contemporary world" },
-        { code: "GE-11-07", text: "applies geographical inquiry skills and tools, including spatial technologies, fieldwork, and ethical practices, to investigate places and environments" },
-        { code: "GE-11-08", text: "applies mathematical ideas and techniques to analyse geographical data" },
-        { code: "GE-11-09", text: "communicates and applies geographical understanding, using geographical knowledge, concepts, terms and tools, in appropriate forms" }
-      ],
-      "Year 12": [
-        { code: "GE-12-01", text: "analyses rural and urban places, ecosystems, global biodiversity and economic activity, for their characteristics, spatial patterns, interactions, and nature and extent of change over time" },
-        { code: "GE-12-02", text: "analyses geographical processes and influences, at a range of scales, that form and transform places and environments" },
-        { code: "GE-12-03", text: "assesses geographical opportunities and challenges, and the role of varying perspectives and responses in their management" },
-        { code: "GE-12-04", text: "evaluates responses and management strategies, at a range of scales, for sustainability" },
-        { code: "GE-12-05", text: "analyses and synthesises relevant geographical information from a variety of sources" },
-        { code: "GE-12-06", text: "justifies geographical methods used in geographical inquiry and their relevance in the contemporary world" },
-        { code: "GE-12-07", text: "selects and applies geographical inquiry skills and tools, including spatial technologies, fieldwork, and ethical practices, to investigate places and environments" },
-        { code: "GE-12-08", text: "selects and applies mathematical ideas and techniques to analyse geographical data" },
-        { code: "GE-12-09", text: "communicates and applies geographical understanding, using geographical knowledge, concepts, terms and tools, in a range of appropriate forms" }
-      ]
-    }
-  }
-};
-
-// ─── Syllabus selector state ───
-let mp1SelectedOutcomes = [];
-
-// Populate syllabus dropdown on load
-(function initSyllabusDropdown() {
-    const sel = document.getElementById('mp1-syllabus');
-    Object.entries(SYLLABUS_DATA).forEach(([key, syl]) => {
-        const opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = syl.label;
-        sel.appendChild(opt);
-    });
-})();
-
-function syllabusChanged() {
-    const syllabusKey = document.getElementById('mp1-syllabus').value;
-    const stageSel = document.getElementById('mp1-stage');
-    const outcomeSel = document.getElementById('mp1-outcome');
-    stageSel.innerHTML = '<option value="">Select a stage...</option>';
-    outcomeSel.innerHTML = '<option value="">Select an outcome to add...</option>';
-    document.getElementById('outcome-picker-row').style.display = 'none';
-
-    // Remove any existing syllabus note
-    const existingNote = document.querySelector('.syllabus-note');
-    if (existingNote) existingNote.remove();
-
-    if (!syllabusKey) {
-        stageSel.disabled = true;
-        return;
-    }
-
-    const syl = SYLLABUS_DATA[syllabusKey];
-
-    // Add note below the syllabus dropdown
-    const note = document.createElement('div');
-    note.className = 'syllabus-note';
-    note.textContent = syl.note;
-    document.getElementById('mp1-syllabus').parentNode.appendChild(note);
-
-    Object.keys(syl.stages).forEach(stage => {
-        const opt = document.createElement('option');
-        opt.value = stage;
-        opt.textContent = stage;
-        stageSel.appendChild(opt);
-    });
-    stageSel.disabled = false;
-}
-
-function stageChanged() {
-    const syllabusKey = document.getElementById('mp1-syllabus').value;
-    const stage = document.getElementById('mp1-stage').value;
-    const outcomeSel = document.getElementById('mp1-outcome');
-    outcomeSel.innerHTML = '<option value="">Select an outcome to add...</option>';
-
-    if (!syllabusKey || !stage) {
-        document.getElementById('outcome-picker-row').style.display = 'none';
-        return;
-    }
-
-    const outcomes = SYLLABUS_DATA[syllabusKey].stages[stage];
-    outcomes.forEach(o => {
-        if (mp1SelectedOutcomes.some(s => s.code === o.code)) return;
-        const opt = document.createElement('option');
-        opt.value = o.code;
-        opt.textContent = o.code + ' \u2014 ' + o.text;
-        outcomeSel.appendChild(opt);
-    });
-    document.getElementById('outcome-picker-row').style.display = 'block';
-}
-
-function outcomeAdded() {
-    const syllabusKey = document.getElementById('mp1-syllabus').value;
-    const stage = document.getElementById('mp1-stage').value;
-    const code = document.getElementById('mp1-outcome').value;
-    if (!code) return;
-
-    const syl = SYLLABUS_DATA[syllabusKey];
-    const outcome = syl.stages[stage].find(o => o.code === code);
-    if (!outcome) return;
-
-    mp1SelectedOutcomes.push({
-        syllabusKey,
-        code: outcome.code,
-        text: outcome.text,
-        syllabusLabel: syl.shortLabel,
-        stage
-    });
-
-    document.getElementById('mp1-outcome').value = '';
-
-    // Remove from dropdown
-    const opts = document.getElementById('mp1-outcome').querySelectorAll('option');
-    opts.forEach(opt => { if (opt.value === code) opt.remove(); });
-
-    renderMp1Chips();
-}
-
-function renderMp1Chips() {
-    const container = document.getElementById('mp1-chips');
-    const row = document.getElementById('mp1-chips-row');
-    container.innerHTML = '';
-
-    if (mp1SelectedOutcomes.length === 0) {
-        row.style.display = 'none';
-        return;
-    }
-    row.style.display = 'block';
-
-    mp1SelectedOutcomes.forEach((o, idx) => {
-        const chip = document.createElement('div');
-        chip.className = 'outcome-chip';
-        chip.innerHTML = `<span class="chip-code">${o.code}</span><span class="chip-text">${o.text}</span><button class="chip-remove" onclick="removeOutcome(${idx})" title="Remove">&times;</button>`;
-        container.appendChild(chip);
-    });
-}
-
-function removeOutcome(idx) {
-    const removed = mp1SelectedOutcomes.splice(idx, 1)[0];
-    const syllabusKey = document.getElementById('mp1-syllabus').value;
-    const stage = document.getElementById('mp1-stage').value;
-    if (syllabusKey === removed.syllabusKey && stage === removed.stage) {
-        const opt = document.createElement('option');
-        opt.value = removed.code;
-        opt.textContent = removed.code + ' \u2014 ' + removed.text;
-        document.getElementById('mp1-outcome').appendChild(opt);
-    }
-    renderMp1Chips();
-}
-
-function getOutcomesText() {
-    if (mp1SelectedOutcomes.length === 0) return '';
-    return mp1SelectedOutcomes.map(o =>
-        `${o.code}: ${o.text} (${o.syllabusLabel}, ${o.stage})`
-    ).join('\n');
-}
-
-// ─── MP2 Syllabus Selector ───
-let mp2SelectedOutcomes = [];
-
-(function initMp2SyllabusDropdown() {
-    const sel = document.getElementById('mp2-syllabus');
-    Object.entries(SYLLABUS_DATA).forEach(([key, syl]) => {
-        const opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = syl.label;
-        sel.appendChild(opt);
-    });
-})();
-
-function mp2SyllabusChanged() {
-    const syllabusKey = document.getElementById('mp2-syllabus').value;
-    const stageSel = document.getElementById('mp2-stage');
-    stageSel.innerHTML = '<option value="">Select a stage...</option>';
-    document.getElementById('mp2-outcome').innerHTML = '<option value="">Select an outcome to add...</option>';
-    document.getElementById('mp2-outcome-picker-row').style.display = 'none';
-    const existingNote = document.getElementById('mp2-syllabus').parentNode.querySelector('.syllabus-note');
-    if (existingNote) existingNote.remove();
-
-    if (!syllabusKey) { stageSel.disabled = true; return; }
-
-    const syl = SYLLABUS_DATA[syllabusKey];
-    const note = document.createElement('div');
-    note.className = 'syllabus-note';
-    note.textContent = syl.note;
-    document.getElementById('mp2-syllabus').parentNode.appendChild(note);
-
-    Object.keys(syl.stages).forEach(stage => {
-        const opt = document.createElement('option');
-        opt.value = stage;
-        opt.textContent = stage;
-        stageSel.appendChild(opt);
-    });
-    stageSel.disabled = false;
-}
-
-function mp2StageChanged() {
-    const syllabusKey = document.getElementById('mp2-syllabus').value;
-    const stage = document.getElementById('mp2-stage').value;
-    const outcomeSel = document.getElementById('mp2-outcome');
-    outcomeSel.innerHTML = '<option value="">Select an outcome to add...</option>';
-
-    if (!syllabusKey || !stage) {
-        document.getElementById('mp2-outcome-picker-row').style.display = 'none';
-        return;
-    }
-
-    SYLLABUS_DATA[syllabusKey].stages[stage].forEach(o => {
-        if (mp2SelectedOutcomes.some(s => s.code === o.code)) return;
-        const opt = document.createElement('option');
-        opt.value = o.code;
-        opt.textContent = o.code + ' \u2014 ' + o.text;
-        outcomeSel.appendChild(opt);
-    });
-    document.getElementById('mp2-outcome-picker-row').style.display = 'block';
-}
-
-function mp2OutcomeAdded() {
-    const syllabusKey = document.getElementById('mp2-syllabus').value;
-    const stage = document.getElementById('mp2-stage').value;
-    const code = document.getElementById('mp2-outcome').value;
-    if (!code) return;
-
-    const syl = SYLLABUS_DATA[syllabusKey];
-    const outcome = syl.stages[stage].find(o => o.code === code);
-    if (!outcome) return;
-
-    mp2SelectedOutcomes.push({
-        syllabusKey, code: outcome.code, text: outcome.text,
-        syllabusLabel: syl.shortLabel, stage
-    });
-
-    document.getElementById('mp2-outcome').value = '';
-    document.getElementById('mp2-outcome').querySelectorAll('option').forEach(opt => {
-        if (opt.value === code) opt.remove();
-    });
-    renderMp2Chips();
-}
-
-function renderMp2Chips() {
-    const container = document.getElementById('mp2-chips');
-    const row = document.getElementById('mp2-chips-row');
-    container.innerHTML = '';
-    if (mp2SelectedOutcomes.length === 0) { row.style.display = 'none'; return; }
-    row.style.display = 'block';
-
-    mp2SelectedOutcomes.forEach((o, idx) => {
-        const chip = document.createElement('div');
-        chip.className = 'outcome-chip';
-        chip.innerHTML = `<span class="chip-code">${o.code}</span><span class="chip-text">${o.text}</span><button class="chip-remove" onclick="removeMp2Outcome(${idx})" title="Remove">&times;</button>`;
-        container.appendChild(chip);
-    });
-}
-
-function removeMp2Outcome(idx) {
-    const removed = mp2SelectedOutcomes.splice(idx, 1)[0];
-    if (document.getElementById('mp2-syllabus').value === removed.syllabusKey && document.getElementById('mp2-stage').value === removed.stage) {
-        const opt = document.createElement('option');
-        opt.value = removed.code;
-        opt.textContent = removed.code + ' \u2014 ' + removed.text;
-        document.getElementById('mp2-outcome').appendChild(opt);
-    }
-    renderMp2Chips();
-}
-
-function getMp2OutcomesText() {
-    if (mp2SelectedOutcomes.length === 0) return '';
-    return mp2SelectedOutcomes.map(o =>
-        `${o.code}: ${o.text} (${o.syllabusLabel}, ${o.stage})`
-    ).join('\n');
-}
 
 const TEMPLATES = {
     mp1: "You are a geography education specialist helping a teacher prepare AI guidance for their students. Your job is to generate a structured prompt table that shows students how to use AI as a purposeful cognitive co-worker at each stage of a geography task, while also showing them what cognitive off-loading looks like so they can recognise the difference.\n\n## Your role\n\nYou are not generating content for students to submit. You are generating prompts that students would type into an AI tool to support their own thinking. Every purposeful prompt must require the student to do genuine geographical thinking before the AI can respond usefully.\n\n## Key concepts\n\n**Purposeful AI use** means the student drives the thinking. The AI clarifies, scaffolds, or collaborates, but the student makes the intellectual decisions: selecting evidence, forming arguments, interpreting patterns, applying geographical concepts.\n\n**Cognitive off-loading** means the AI does the thinking for the student. The output could be submitted as-is with zero student effort. These prompts exist in the table as a contrast, not a model. They help students (and teachers) see the line between using AI to think harder and using AI to avoid thinking.\n\n**Follow-up prompts** deepen the exchange after the AI responds to a purposeful prompt. They push the student to interrogate, challenge, or extend the AI's response rather than accept it passively. A follow-up should never request a submittable output.\n\n## AI Scale Levels\n\nThe teacher will nominate one of these levels. All purposeful prompts must stay strictly within the boundaries of the nominated level.\n\n- **Level 1 \u2014 AI as Clarifier:** Students may only ask AI to explain geographical concepts, define terms, or clarify processes. They share no task-specific context with the AI. All research, analysis, and composition is done independently.\n- **Level 2 \u2014 AI as Scaffolder:** Students may use AI for brainstorming, planning, and outlining. They can share their task context to get structural support. All written content, analysis, and conclusions are produced independently by the student.\n- **Level 3 \u2014 AI as Co-worker:** Full collaboration is permitted. Students can use AI for iterative drafting, critical feedback, persona-based dialogue, and refinement. The key ethical requirement is transparency: students must disclose their AI use. Non-disclosure is the primary violation, not the use itself.\n\n**Cross-cutting rule:** At any level, students may use AI to get feedback on work they have already produced. Feedback and refinement prompts must not generate new content.\n\n## Geography learning stages\n\nEach row of the table must represent a distinct stage in the geographical inquiry process. Use these as your starting framework and adapt them to fit the specific task:\n\n- Acquiring geographical information\n- Processing geographical data\n- Analysing geographical patterns\n- Applying geographical concepts\n- Communicating geographical understanding\n- Reflecting on findings\n\nYou may combine, split, rename, or resequence these stages to match the task. For example, a fieldwork task might need \"Planning data collection\" and \"Processing field data\" as separate stages, while a case study task might need \"Evaluating source reliability\" and \"Comparing perspectives.\" Always include at least one row addressing reflection or metacognition.\n\nGenerate 6 to 8 rows covering distinct stages of the task.\n\n## Student language calibration\n\nMatch the tone and complexity of the prompt language to the year group:\n\n- **Years 7\u20138:** Warm, accessible, concrete. Use simple sentence structures and everyday examples. Prompts should feel approachable.\n- **Years 9\u201310:** Direct and peer-appropriate. No hand-holding, but no unnecessary jargon either. Students are comfortable with subject-specific terminology.\n- **Years 11\u201312:** Collegiate and sophisticated. Students at this level can handle multi-step prompting, persona-setting, and complex analytical frameworks.\n\n## Topic discipline\n\nThis is the highest-priority rule and overrides all other content guidance.\n\n1. Read the task description carefully. Look for a specific, named topic (e.g. \"the 2022 Pakistan floods\", \"urban sprawl in Western Sydney\", \"coral bleaching on the Great Barrier Reef\"). A topic is specific only if it names a particular place, event, phenomenon, or case study.\n2. If a specific topic IS named: use that topic throughout every row.\n3. If the task is topic-agnostic (students each choose their own case study, fieldwork site, or research focus): use `[student's chosen topic]` as a placeholder in every row. Do NOT invent an example topic. Do NOT substitute a generic theme like \"a geographical issue\" or \"a natural hazard.\"\n4. How to detect topic-agnostic tasks: if the task says students \"choose\", \"select\", \"investigate\", or \"develop\" their own question, site, or focus, it is topic-agnostic.\n\n## Critical rules\n\n- Use British English spelling throughout (analyse, organise, behaviour, summarise, recognise, centre, colour).\n- Never use the word \"cheating.\" Use \"over-reliant\" or \"cognitive off-loading.\"\n- Never name specific AI tools (ChatGPT, Claude, Gemini, etc.). Use \"AI tool\" or \"AI.\"\n- Never produce prompts that could themselves serve as a student submission.\n- Every purposeful prompt must require the student to contribute genuine thinking, evidence, or decisions before the AI can respond usefully.\n- Every cognitive off-loading prompt must be one that would produce a submittable output with zero student effort.\n- Every follow-up prompt must deepen or challenge the AI's response. It must never request a complete output.\n- The commentary column is for the teacher, not the student. It should explain why the purposeful prompt is productive: what geographical thinking it preserves, what cognitive load it distributes, and how it connects to the learning intention.\n\n## Output format\n\nPresent your output as a table with these columns:\n\n| Learning Stage | Purposeful Prompt | Follow-Up Prompt | Cognitive Off-Loading Prompt | Teacher Commentary |\n|---|---|---|---|---|\n\nBefore the table, include a short **Teacher Note** (2\u20133 sentences) explaining how to use the table with students.\n\nAfter the table, include a **Student Footer** (1\u20132 sentences) written directly to students in age-appropriate language, reinforcing that AI is a thinking partner, not a shortcut.\n\nAfter the student footer, include a **Discussion Prompt for Each Stage**: a numbered list matching each row, with a question the teacher can use to facilitate class discussion about AI use at that stage of the task.\n\n---",
@@ -1203,7 +713,7 @@ function generateMP1() {
     const year = document.getElementById('mp1-year').value || 'Not specified';
     const scale = document.getElementById('mp1-scale').value;
     const task = document.getElementById('mp1-task').value || 'Not provided';
-    const outcomesText = getOutcomesText();
+    const intentions = document.getElementById('mp1-intentions').value;
     const includeOffloading = document.getElementById('mp1-offloading').value === 'yes';
 
     let details = `\n## My task details\n\n`;
@@ -1211,8 +721,8 @@ function generateMP1() {
     details += `**Year group:** ${year}\n\n`;
     details += `**AI Scale Level:** ${scale}\n\n`;
     details += `**Task description:** ${task}\n\n`;
-    if (outcomesText) {
-        details += `**Syllabus outcomes for this task:**\n${outcomesText}\n\n`;
+    if (intentions) {
+        details += `**Learning intentions or outcomes:** ${intentions}\n\n`;
     }
     if (!includeOffloading) {
         details += `**Output preference:** Do NOT include the cognitive off-loading column or the discussion prompts. Produce a clean table with only: Learning Stage, Purposeful Prompt, Follow-Up Prompt, and Teacher Commentary. This version is for direct student use.\n\n`;
@@ -1227,13 +737,9 @@ function generateMP2() {
     const subject = document.getElementById('mp2-subject').value || 'Not specified';
     const task = document.getElementById('mp2-task').value || 'Not provided';
     const context = document.getElementById('mp2-context').value;
-    const mp2OutcomesText = getMp2OutcomesText();
 
     let details = `\n## My task details\n\n`;
     details += `**Subject and year group:** ${subject}\n\n`;
-    if (mp2OutcomesText) {
-        details += `**Syllabus outcomes for this task:**\n${mp2OutcomesText}\n\n`;
-    }
     details += `**Task description:** ${task}\n\n`;
     if (context) {
         details += `**Context:** ${context}\n\n`;
@@ -1273,117 +779,11 @@ function copyOutput(preId, btn) {
     });
 }
 
-// ─── Tool Chooser Navigation ───
-function showTool(toolId) {
-    document.getElementById('tool-chooser').style.display = 'none';
-    document.querySelectorAll('.tool-view').forEach(v => v.classList.remove('active'));
-    document.getElementById('view-' + toolId).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+// Hash navigation
+if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
 }
-
-function showChooser() {
-    document.querySelectorAll('.tool-view').forEach(v => v.classList.remove('active'));
-    document.getElementById('tool-chooser').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Handle hash navigation (e.g. master-prompts.html#vulnerability)
-(function handleHash() {
-    const hash = window.location.hash;
-    if (hash === '#vulnerability') showTool('mp2');
-    else if (hash === '#differentiation') showTool('diff');
-    else if (hash === '#student-prompts' || hash === '#mp1') showTool('mp1');
-})();
-
-// ─── File Reading (with mammoth.js for docx, pdf.js for PDF) ───
-function handleFile(input, targetId) {
-    const file = input.files[0];
-    if (!file) return;
-    const textarea = document.getElementById(targetId);
-    const dropZone = textarea.closest('.field').querySelector('.file-drop-zone');
-
-    // Show loading state
-    const origText = dropZone.childNodes[0].textContent;
-    dropZone.childNodes[0].textContent = 'Reading file...';
-
-    if (file.name.endsWith('.docx')) {
-        const reader = new FileReader();
-        reader.onload = function() {
-            mammoth.extractRawText({ arrayBuffer: reader.result })
-                .then(result => {
-                    textarea.value = result.value;
-                    dropZone.childNodes[0].textContent = '\u2714 Loaded: ' + file.name;
-                    setTimeout(() => { dropZone.childNodes[0].textContent = origText; }, 3000);
-                })
-                .catch(() => {
-                    textarea.value = '[Could not read this Word document. Please copy and paste the text manually.]';
-                    dropZone.childNodes[0].textContent = origText;
-                });
-        };
-        reader.readAsArrayBuffer(file);
-    } else if (file.name.endsWith('.pdf')) {
-        const reader = new FileReader();
-        reader.onload = async function() {
-            try {
-                const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(reader.result) }).promise;
-                let text = '';
-                for (let i = 1; i <= pdf.numPages; i++) {
-                    const page = await pdf.getPage(i);
-                    const content = await page.getTextContent();
-                    text += content.items.map(item => item.str).join(' ') + '\n\n';
-                }
-                textarea.value = text.trim();
-                dropZone.childNodes[0].textContent = '\u2714 Loaded: ' + file.name;
-                setTimeout(() => { dropZone.childNodes[0].textContent = origText; }, 3000);
-            } catch(e) {
-                textarea.value = '[Could not read this PDF. Please copy and paste the text manually.]';
-                dropZone.childNodes[0].textContent = origText;
-            }
-        };
-        reader.readAsArrayBuffer(file);
-    } else if (file.name.endsWith('.txt') || file.name.endsWith('.rtf')) {
-        const reader = new FileReader();
-        reader.onload = () => {
-            textarea.value = reader.result;
-            dropZone.childNodes[0].textContent = '\u2714 Loaded: ' + file.name;
-            setTimeout(() => { dropZone.childNodes[0].textContent = origText; }, 3000);
-        };
-        reader.readAsText(file);
-    } else {
-        const reader = new FileReader();
-        reader.onload = () => {
-            textarea.value = reader.result;
-            dropZone.childNodes[0].textContent = '\u2714 Loaded: ' + file.name;
-            setTimeout(() => { dropZone.childNodes[0].textContent = origText; }, 3000);
-        };
-        reader.readAsText(file);
-    }
-    input.value = '';
-}
-
-// Drag and drop
-document.querySelectorAll('.file-drop-zone').forEach(zone => {
-    zone.addEventListener('dragover', e => {
-        e.preventDefault();
-        zone.classList.add('dragover');
-    });
-    zone.addEventListener('dragleave', () => {
-        zone.classList.remove('dragover');
-    });
-    zone.addEventListener('drop', e => {
-        e.preventDefault();
-        zone.classList.remove('dragover');
-        const file = e.dataTransfer.files[0];
-        if (!file) return;
-        const fileInput = zone.querySelector('input[type="file"]');
-        const targetId = fileInput.getAttribute('onchange').match(/'([^']+)'/)[1];
-        const dt = new DataTransfer();
-        dt.items.add(file);
-        fileInput.files = dt.files;
-        handleFile(fileInput, targetId);
-    });
-});
 </script>
-
-
-</body></html>
+</body>
+</html>
